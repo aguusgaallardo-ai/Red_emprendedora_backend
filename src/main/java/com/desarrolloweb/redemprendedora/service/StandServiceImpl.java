@@ -89,6 +89,11 @@ public class StandServiceImpl implements StandService {
                         "%" + filtro.getNombreEvento().toLowerCase() + "%"));
             }
 
+            if (filtro.getIdUsuario() != null) {
+                predicates.add(criteriaBuilder.equal(
+                        root.get("usuario").get("idUsuario"), filtro.getIdUsuario().longValue()));
+            }           
+
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
 
